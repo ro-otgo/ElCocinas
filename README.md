@@ -1,0 +1,2 @@
+# ElCocinas
+Proyecto Computación I
