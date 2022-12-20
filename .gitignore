@@ -132,3 +132,5 @@ dmypy.json
 transcript/
 source_videos_prueba.txt
 source_videos_prueba.txt
+.project
+.DS_Store
