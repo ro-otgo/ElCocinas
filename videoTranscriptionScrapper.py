@@ -24,6 +24,6 @@ def load_youtube_files(file_path:str) -> list:
 
 if __name__ == "__main__":
     create_transcript_folder('transcript')
-    lista_videos = load_youtube_files('source_videos.txt')
+    lista_videos = load_youtube_files('videos.txt')
     for v in lista_videos:
         downloadVideoScript(v)
