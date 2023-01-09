@@ -7,7 +7,7 @@ def create_transcript_folder(transcript_folder:str) -> None:
     if not os.path.exists(transcript_folder):
         os.mkdir(transcript_folder)
 
-def downloadVideoScript(videoId:str, transcript_folder='transcript') -> None:
+def downloadVideoScript(videoId:str, transcript_folder='primeros') -> None:
     transcript_list = YouTubeTranscriptApi.list_transcripts(videoId)
     transcript = transcript_list.find_transcript(['en'])
     data_transcript = transcript.fetch()
@@ -23,7 +23,7 @@ def load_youtube_files(file_path:str) -> list:
     return videos_id_list
 
 if __name__ == "__main__":
-    create_transcript_folder('transcript')
-    lista_videos = load_youtube_files('videos.txt')
+    create_transcript_folder('primeros')
+    lista_videos = load_youtube_files('primeros.txt')
     for v in lista_videos:
         downloadVideoScript(v)
