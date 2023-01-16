@@ -9,6 +9,9 @@ Tras la ejecucion del script se escribira el proceso en un archivo tipo xml con 
 siguiente nombre:
 - SALIDA_FILE  = Nombre del archivo resultado
 """
+
+__author__ = "ro-otgo"
+
 import xml.etree.ElementTree  as ET
 
 

@@ -20,17 +20,27 @@ Parametros a configurar;
 - SOURCE_VIDEOS = Ubicacion del archivo de texto donde estaran almacenados los 
     videos que se desean obtener la transcripcion.
 - TRANSCRIPT_FOLDER = Carpeta donde se almacena la transcripcion de los videos.
+
+Ejemplo:
+```
+LOG_LEVEL = logging.INFO
+SOURCE_VIDEOS = r'Scraping\Ficheros\primeros.txt'
+TRANSCRIPT_FOLDER = 'primeros'
+```
 """
+
+__author__ = "ro-otgo"
+
 from youtube_transcript_api import YouTubeTranscriptApi
 from urllib import parse
 import logging
 import json
 import os
+import sys
 
 LOG_LEVEL = logging.INFO
-SOURCE_VIDEOS = 'primeros.txt'
-# TRANSCRIPT_FOLDER = 'transcript'
-TRANSCRIPT_FOLDER = 'primeros'
+SOURCE_VIDEOS = r'source.txt'
+TRANSCRIPT_FOLDER = 'output_transcripciones'
 
 def create_transcript_folder(transcript_folder: str) -> None:
     if not os.path.exists(transcript_folder):
@@ -65,7 +75,7 @@ def load_youtube_files(file_path: str) -> list:
                 logger.error('Se ha producido una excepcion: %s', e)
     return videos_id_list
 
-def crear_logger(level: int = LOG_LEVEL):
+def crear_logger(level: int = LOG_LEVEL) -> logging.Logger:
     print('crear logger')
     logger = logging.getLogger(__name__)
 
@@ -87,8 +97,17 @@ def crear_logger(level: int = LOG_LEVEL):
 
 logger = crear_logger(LOG_LEVEL)
 
+def __check_source_file() -> None:
+    if not os.path.exists(SOURCE_VIDEOS):
+        logger.error('No se ha podido localizar el fichero de las transcripciones')
+        sys.exit()
+    if not TRANSCRIPT_FOLDER:
+        logger.error('No se ha especificado el nombre de la carpeta donde se almacenaran las transcripciones')
+        sys.exit()
+
 if __name__ == "__main__":
     logger.info('inicio')
+    __check_source_file()
     create_transcript_folder(TRANSCRIPT_FOLDER)
     lista_videos = load_youtube_files(SOURCE_VIDEOS)
     logger.info('Se han obtenido %d videos', len(lista_videos))
