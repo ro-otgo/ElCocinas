@@ -47,9 +47,9 @@ def create_transcript_folder(transcript_folder: str) -> None:
         os.mkdir(transcript_folder)
         logger.info('Se ha creado la carpeta %s', transcript_folder)
 
-def download_video_transcript(video_id: str, transcript_folder: str = TRANSCRIPT_FOLDER) -> None:
+def download_video_transcript(video_id: str, transcript_folder: str = TRANSCRIPT_FOLDER, language_code: str = 'en') -> None:
     transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-    transcript = transcript_list.find_transcript(['en'])
+    transcript = transcript_list.find_transcript([language_code])
     data_transcript = transcript.fetch()
     logger.debug('Se va a descargar la transcripcion del video : %s', video_id)
     with open(os.path.join(transcript_folder,'video_{}.json'.format(video_id)), 'w', encoding='utf-8') as file:
@@ -104,6 +104,13 @@ def __check_source_file() -> None:
     if not TRANSCRIPT_FOLDER:
         logger.error('No se ha especificado el nombre de la carpeta donde se almacenaran las transcripciones')
         sys.exit()
+
+def download_video():
+    try:
+        download_video_transcript('QtP_hQGaDzU', language_code='es')
+    except Exception as e:
+        logger.error('Se ha producido una excepcion procesando el video: %s', v)
+    logger.info('Ha finalizado el programa')
 
 if __name__ == "__main__":
     logger.info('inicio')
