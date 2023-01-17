@@ -1,6 +1,13 @@
 """
 Este script tiene como objetivo convertir los transcripciones json que se han 
 descargado en ficheros de tipo texto.
+
+Parametros a configurar:
+  - TRANSCRIPT_DIR = Donde estan las transcripciones
+  - PROCESSED_DIR = Carpeta donde se almaceran las transcripciones
+  - EXCLUDED_DIRS = Carpetas a excluir
+  - JSON_JOINED_NAME = Texto donde se juntan todas las transcripciones en formato json
+  - CSV_JOINED_NAME = Texto donde se juntan todas las transcripciones en formato csv
 """
 
 __author__ = "ro-otgo"
