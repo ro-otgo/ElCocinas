@@ -1,0 +1,12 @@
+cereal
+salt
+chip
+vanilla
+butter
+marshmallow
+flavoring
+candy
+coconut
+corn
+hand
+chocolate

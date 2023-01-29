@@ -1,0 +1,15 @@
+salt
+bread
+sauce
+thyme
+zucchini
+egg
+paprika
+seasoning
+basil
+cheese
+pepper
+spice
+garlic
+crumb
+onion

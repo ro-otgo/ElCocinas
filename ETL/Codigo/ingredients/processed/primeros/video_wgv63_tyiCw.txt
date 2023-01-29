@@ -1,0 +1,15 @@
+yolk
+hand
+shell
+leaf
+water
+ravioli
+sage
+cheese
+pepper
+egg
+butter
+salt
+lemon
+spinach
+sauce

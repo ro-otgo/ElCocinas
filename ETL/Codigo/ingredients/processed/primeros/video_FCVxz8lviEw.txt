@@ -1,0 +1,10 @@
+chicken
+oil
+egg
+pepper
+flavoring
+spice
+breast
+crumb
+meal
+milk

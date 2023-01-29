@@ -1,0 +1,10 @@
+sugar
+cereal
+waffle
+syrup
+butter
+coconut
+hand
+walnut
+pancake
+peanut

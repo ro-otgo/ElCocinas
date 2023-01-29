@@ -1,0 +1,9 @@
+vanilla
+hand
+peanut
+rice
+savory
+butter
+chocolate
+cereal
+sugar

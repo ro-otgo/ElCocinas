@@ -1,0 +1,16 @@
+grouper
+noodle
+link
+oil
+juice
+soup
+meat
+rice
+seasoning
+potato
+butter
+fish
+zucchini
+roll
+salad
+fillet

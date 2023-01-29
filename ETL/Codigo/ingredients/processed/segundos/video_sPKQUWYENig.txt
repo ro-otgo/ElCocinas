@@ -1,0 +1,17 @@
+stew
+foot
+hand
+hamburger
+blood
+sausage
+filet
+roast
+date
+meat
+wine
+silver
+beef
+chuck
+stock
+fat
+tenderloin

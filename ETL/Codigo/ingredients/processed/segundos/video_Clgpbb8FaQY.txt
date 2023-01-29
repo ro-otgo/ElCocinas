@@ -1,0 +1,13 @@
+herb
+garlic
+hand
+onion
+steak
+oil
+juice
+pepper
+crust
+seasoning
+butter
+salt
+sauce

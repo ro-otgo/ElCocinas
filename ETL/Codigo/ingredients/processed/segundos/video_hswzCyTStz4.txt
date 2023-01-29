@@ -1,0 +1,14 @@
+rib
+oil
+water
+juice
+rub
+meat
+seasoning
+cider
+salt
+liquid
+apple
+vinegar
+sugar
+sauce

@@ -1,0 +1,16 @@
+gravy
+water
+meat
+lentil
+potato
+sauce
+chili
+base
+carrot
+vegetable
+beef
+curry
+rice
+spice
+tomato
+onion

@@ -1,0 +1,10 @@
+water
+broth
+sauce
+egg
+soup
+soy
+corn
+onion
+chicken
+ginger

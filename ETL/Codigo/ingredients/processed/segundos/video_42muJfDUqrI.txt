@@ -1,0 +1,12 @@
+stew
+carrot
+onion
+leaf
+oil
+roast
+pepper
+meat
+potato
+beef
+salt
+broth

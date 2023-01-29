@@ -1,0 +1,17 @@
+batter
+relish
+hand
+oil
+cod
+peanut
+bread
+juice
+pepper
+meat
+chip
+candy
+caper
+fish
+salt
+fillet
+sauce

@@ -1,0 +1,11 @@
+salt
+chili
+butter
+cherry
+seasoning
+lemon
+onion
+spice
+garlic
+tomato
+fish

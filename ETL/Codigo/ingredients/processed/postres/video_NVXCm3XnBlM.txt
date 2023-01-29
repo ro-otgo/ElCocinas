@@ -1,0 +1,15 @@
+pastry
+yolk
+hand
+topping
+filling
+egg
+juice
+candy
+crust
+butter
+dough
+salt
+lemon
+flour
+sugar

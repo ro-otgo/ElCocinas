@@ -1,0 +1,17 @@
+bean
+pasta
+barley
+salt
+quinoa
+meal
+celery
+zucchini
+carrot
+soup
+rice
+stock
+vegetable
+pepper
+onion
+garlic
+tomato

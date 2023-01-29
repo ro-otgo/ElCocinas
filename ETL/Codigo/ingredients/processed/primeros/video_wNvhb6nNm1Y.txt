@@ -1,0 +1,14 @@
+ham
+hand
+sandwich
+onion
+pickle
+bread
+banana
+lettuce
+vegetable
+butter
+mustard
+celery
+cucumber
+cracker

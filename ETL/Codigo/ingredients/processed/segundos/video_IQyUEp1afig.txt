@@ -1,0 +1,11 @@
+herb
+corn
+oil
+water
+tongue
+juice
+pepper
+spice
+fish
+salt
+lemon

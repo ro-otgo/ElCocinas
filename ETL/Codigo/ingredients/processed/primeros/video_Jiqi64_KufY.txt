@@ -1,0 +1,13 @@
+rib
+herb
+cream
+garlic
+oil
+onion
+cheese
+pepper
+potato
+butter
+soup
+salt
+meal

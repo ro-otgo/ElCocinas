@@ -1,0 +1,12 @@
+bread
+milk
+meal
+egg
+flavoring
+pepper
+peanut
+chicken
+jelly
+spice
+oil
+breast

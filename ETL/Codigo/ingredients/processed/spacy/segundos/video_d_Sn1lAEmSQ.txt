@@ -1,0 +1,16 @@
+water
+sugar
+broth
+salt
+sauce
+wine
+rice
+soy
+pepper
+chicken
+liquid
+onion
+spice
+garlic
+oil
+ginger

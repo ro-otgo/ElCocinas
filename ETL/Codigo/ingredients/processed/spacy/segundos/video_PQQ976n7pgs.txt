@@ -1,0 +1,12 @@
+salt
+bread
+sauce
+milk
+egg
+flour
+buffalo
+fryer
+pepper
+chicken
+parsley
+breast

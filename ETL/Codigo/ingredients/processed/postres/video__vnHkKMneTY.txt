@@ -1,0 +1,13 @@
+vanilla
+strawberry
+peanut
+raspberry
+walnut
+blueberry
+banana
+nut
+seed
+butter
+honey
+almond
+meal
