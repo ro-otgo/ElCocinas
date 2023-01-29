@@ -20,26 +20,36 @@ Parametros a configurar;
 - SOURCE_VIDEOS = Ubicacion del archivo de texto donde estaran almacenados los 
     videos que se desean obtener la transcripcion.
 - TRANSCRIPT_FOLDER = Carpeta donde se almacena la transcripcion de los videos.
+
+Ejemplo:
+```
+LOG_LEVEL = logging.INFO
+SOURCE_VIDEOS = r'Scraping\Ficheros\primeros.txt'
+TRANSCRIPT_FOLDER = 'primeros'
+```
 """
+
+__author__ = "ro-otgo"
+
 from youtube_transcript_api import YouTubeTranscriptApi
 from urllib import parse
 import logging
 import json
 import os
+import sys
 
 LOG_LEVEL = logging.INFO
-SOURCE_VIDEOS = 'primeros.txt'
-# TRANSCRIPT_FOLDER = 'transcript'
-TRANSCRIPT_FOLDER = 'primeros'
+SOURCE_VIDEOS = r'source.txt'
+TRANSCRIPT_FOLDER = 'output_transcripciones'
 
 def create_transcript_folder(transcript_folder: str) -> None:
     if not os.path.exists(transcript_folder):
         os.mkdir(transcript_folder)
         logger.info('Se ha creado la carpeta %s', transcript_folder)
 
-def download_video_transcript(video_id: str, transcript_folder: str = TRANSCRIPT_FOLDER) -> None:
+def download_video_transcript(video_id: str, transcript_folder: str = TRANSCRIPT_FOLDER, language_code: str = 'en') -> None:
     transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-    transcript = transcript_list.find_transcript(['en'])
+    transcript = transcript_list.find_transcript([language_code])
     data_transcript = transcript.fetch()
     logger.debug('Se va a descargar la transcripcion del video : %s', video_id)
     with open(os.path.join(transcript_folder,'video_{}.json'.format(video_id)), 'w', encoding='utf-8') as file:
@@ -65,7 +75,7 @@ def load_youtube_files(file_path: str) -> list:
                 logger.error('Se ha producido una excepcion: %s', e)
     return videos_id_list
 
-def crear_logger(level: int = LOG_LEVEL):
+def crear_logger(level: int = LOG_LEVEL) -> logging.Logger:
     print('crear logger')
     logger = logging.getLogger(__name__)
 
@@ -87,8 +97,24 @@ def crear_logger(level: int = LOG_LEVEL):
 
 logger = crear_logger(LOG_LEVEL)
 
+def __check_source_file() -> None:
+    if not os.path.exists(SOURCE_VIDEOS):
+        logger.error('No se ha podido localizar el fichero de las transcripciones')
+        sys.exit()
+    if not TRANSCRIPT_FOLDER:
+        logger.error('No se ha especificado el nombre de la carpeta donde se almacenaran las transcripciones')
+        sys.exit()
+
+def download_video():
+    try:
+        download_video_transcript('QtP_hQGaDzU', language_code='es')
+    except Exception as e:
+        logger.error('Se ha producido una excepcion procesando el video: %s', v)
+    logger.info('Ha finalizado el programa')
+
 if __name__ == "__main__":
     logger.info('inicio')
+    __check_source_file()
     create_transcript_folder(TRANSCRIPT_FOLDER)
     lista_videos = load_youtube_files(SOURCE_VIDEOS)
     logger.info('Se han obtenido %d videos', len(lista_videos))

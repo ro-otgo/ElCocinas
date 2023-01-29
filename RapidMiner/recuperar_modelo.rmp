@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="10.0.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="10.0.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve" width="90" x="313" y="34">
+        <parameter key="repository_entry" value="../modelos/bayes_kernel"/>
+      </operator>
+      <operator activated="false" class="text:process_document_from_file" compatibility="10.0.000" expanded="true" height="82" name="Process Documents from Files" width="90" x="246" y="136">
+        <list key="text_directories">
+          <parameter key="Postres" value="S:/uropea/1_cuatrimiestre/proyecto_computacion1/proyecto/cocinas_update/Scraping/Datos/postres"/>
+        </list>
+        <parameter key="file_pattern" value="*"/>
+        <parameter key="extract_text_only" value="true"/>
+        <parameter key="use_file_extension_as_type" value="true"/>
+        <parameter key="content_type" value="txt"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="create_word_vector" value="true"/>
+        <parameter key="vector_creation" value="TF-IDF"/>
+        <parameter key="add_meta_information" value="true"/>
+        <parameter key="keep_text" value="false"/>
+        <parameter key="prune_method" value="none"/>
+        <parameter key="prune_below_percent" value="3.0"/>
+        <parameter key="prune_above_percent" value="30.0"/>
+        <parameter key="prune_below_rank" value="0.05"/>
+        <parameter key="prune_above_rank" value="0.95"/>
+        <parameter key="datamanagement" value="double_sparse_array"/>
+        <parameter key="data_management" value="auto"/>
+        <process expanded="true">
+          <operator activated="true" class="text:tokenize" compatibility="10.0.000" expanded="true" height="68" name="Tokenize (2)" width="90" x="45" y="289">
+            <parameter key="mode" value="non letters"/>
+            <parameter key="characters" value=".:"/>
+            <parameter key="language" value="English"/>
+            <parameter key="max_token_length" value="3"/>
+          </operator>
+          <operator activated="true" class="text:filter_by_length" compatibility="10.0.000" expanded="true" height="68" name="Filter Tokens (by Length)" width="90" x="179" y="289">
+            <parameter key="min_chars" value="4"/>
+            <parameter key="max_chars" value="25"/>
+          </operator>
+          <operator activated="true" class="text:transform_cases" compatibility="10.0.000" expanded="true" height="68" name="Transform Cases (2)" width="90" x="313" y="289">
+            <parameter key="transform_to" value="lower case"/>
+          </operator>
+          <operator activated="true" class="text:filter_stopwords_english" compatibility="10.0.000" expanded="true" height="68" name="Filter Stopwords (English)" width="90" x="447" y="289"/>
+          <operator activated="true" class="text:filter_stopwords_dictionary" compatibility="10.0.000" expanded="true" height="82" name="Filter Stopwords (Dictionary)" width="90" x="581" y="289">
+            <parameter key="file" value="S:/uropea/1_cuatrimiestre/proyecto_computacion1/proyecto/cocinas_update/RapidMiner/StopWords/stopwords.txt"/>
+            <parameter key="case_sensitive" value="false"/>
+            <parameter key="encoding" value="SYSTEM"/>
+          </operator>
+          <operator activated="true" class="text:stem_porter" compatibility="10.0.000" expanded="true" height="68" name="Stem (Porter)" width="90" x="715" y="289"/>
+          <connect from_port="document" to_op="Tokenize (2)" to_port="document"/>
+          <connect from_op="Tokenize (2)" from_port="document" to_op="Filter Tokens (by Length)" to_port="document"/>
+          <connect from_op="Filter Tokens (by Length)" from_port="document" to_op="Transform Cases (2)" to_port="document"/>
+          <connect from_op="Transform Cases (2)" from_port="document" to_op="Filter Stopwords (English)" to_port="document"/>
+          <connect from_op="Filter Stopwords (English)" from_port="document" to_op="Filter Stopwords (Dictionary)" to_port="document"/>
+          <connect from_op="Filter Stopwords (Dictionary)" from_port="document" to_op="Stem (Porter)" to_port="document"/>
+          <connect from_op="Stem (Porter)" from_port="document" to_port="document 1"/>
+          <portSpacing port="source_document" spacing="0"/>
+          <portSpacing port="sink_document 1" spacing="0"/>
+          <portSpacing port="sink_document 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="text:read_document" compatibility="10.0.000" expanded="true" height="68" name="Read Document" width="90" x="45" y="136">
+        <parameter key="file" value="S:/uropea/1_cuatrimiestre/proyecto_computacion1/proyecto/cocinas_update/Scraping/Datos/processed/postres/video_0bDq4mJrt4c.txt"/>
+        <parameter key="extract_text_only" value="true"/>
+        <parameter key="use_file_extension_as_type" value="true"/>
+        <parameter key="content_type" value="txt"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <operator activated="true" class="text:process_documents" compatibility="10.0.000" expanded="true" height="103" name="Process Documents" width="90" x="112" y="238">
+        <parameter key="create_word_vector" value="true"/>
+        <parameter key="vector_creation" value="Term Frequency"/>
+        <parameter key="add_meta_information" value="false"/>
+        <parameter key="keep_text" value="true"/>
+        <parameter key="prune_method" value="none"/>
+        <parameter key="prune_below_percent" value="3.0"/>
+        <parameter key="prune_above_percent" value="30.0"/>
+        <parameter key="prune_below_rank" value="0.05"/>
+        <parameter key="prune_above_rank" value="0.95"/>
+        <parameter key="datamanagement" value="double_sparse_array"/>
+        <parameter key="data_management" value="auto"/>
+        <process expanded="true">
+          <operator activated="true" class="text:tokenize" compatibility="10.0.000" expanded="true" height="68" name="Tokenize" width="90" x="246" y="238">
+            <parameter key="mode" value="non letters"/>
+            <parameter key="characters" value=".:"/>
+            <parameter key="language" value="English"/>
+            <parameter key="max_token_length" value="3"/>
+          </operator>
+          <operator activated="true" class="text:filter_by_length" compatibility="10.0.000" expanded="true" height="68" name="Filter Tokens (by Length) (2)" width="90" x="380" y="238">
+            <parameter key="min_chars" value="4"/>
+            <parameter key="max_chars" value="25"/>
+          </operator>
+          <operator activated="true" class="text:transform_cases" compatibility="10.0.000" expanded="true" height="68" name="Transform Cases" width="90" x="514" y="238">
+            <parameter key="transform_to" value="lower case"/>
+          </operator>
+          <operator activated="true" class="text:filter_stopwords_english" compatibility="10.0.000" expanded="true" height="68" name="Filter Stopwords (English) (2)" width="90" x="648" y="238"/>
+          <operator activated="true" class="text:filter_stopwords_dictionary" compatibility="10.0.000" expanded="true" height="82" name="Filter Stopwords (Dictionary) (2)" width="90" x="782" y="238">
+            <parameter key="file" value="S:/uropea/1_cuatrimiestre/proyecto_computacion1/proyecto/cocinas_update/RapidMiner/StopWords/stopwords.txt"/>
+            <parameter key="case_sensitive" value="false"/>
+            <parameter key="encoding" value="SYSTEM"/>
+          </operator>
+          <operator activated="true" class="text:stem_porter" compatibility="10.0.000" expanded="true" height="68" name="Stem (Porter) (2)" width="90" x="916" y="238"/>
+          <connect from_port="document" to_op="Tokenize" to_port="document"/>
+          <connect from_op="Tokenize" from_port="document" to_op="Filter Tokens (by Length) (2)" to_port="document"/>
+          <connect from_op="Filter Tokens (by Length) (2)" from_port="document" to_op="Transform Cases" to_port="document"/>
+          <connect from_op="Transform Cases" from_port="document" to_op="Filter Stopwords (English) (2)" to_port="document"/>
+          <connect from_op="Filter Stopwords (English) (2)" from_port="document" to_op="Filter Stopwords (Dictionary) (2)" to_port="document"/>
+          <connect from_op="Filter Stopwords (Dictionary) (2)" from_port="document" to_op="Stem (Porter) (2)" to_port="document"/>
+          <connect from_op="Stem (Porter) (2)" from_port="document" to_port="document 1"/>
+          <portSpacing port="source_document" spacing="0"/>
+          <portSpacing port="sink_document 1" spacing="0"/>
+          <portSpacing port="sink_document 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="text:wordlist_to_data" compatibility="10.0.000" expanded="true" height="82" name="WordList to Data (2)" width="90" x="246" y="391"/>
+      <operator activated="true" class="multiply" compatibility="10.0.000" expanded="true" height="103" name="Process_Documents_WordlistToData" width="90" x="514" y="391"/>
+      <operator activated="true" class="multiply" compatibility="10.0.000" expanded="true" height="103" name="process_documents_exSet" width="90" x="313" y="238"/>
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (2)" width="90" x="45" y="442">
+        <parameter key="repository_entry" value="../modelos/wordlist_documents"/>
+      </operator>
+      <operator activated="true" class="text:wordlist_to_data" compatibility="10.0.000" expanded="true" height="82" name="WordList to Data" width="90" x="179" y="493"/>
+      <operator activated="true" class="multiply" compatibility="10.0.000" expanded="true" height="103" name="Retrieve_data_trainned_for_model" width="90" x="380" y="493"/>
+      <operator activated="true" class="python_scripting:execute_python" compatibility="10.0.000" expanded="true" height="145" name="Execute Python" width="90" x="514" y="136">
+        <parameter key="script" value="import pandas&#10;import json&#10;&#10;# rm_main is a mandatory function, &#10;# the number of arguments has to be the number of input ports (can be none),&#10;#     or the number of input ports plus one if &quot;use macros&quot; parameter is set&#10;# if you want to use macros, use this instead and check &quot;use macros&quot; parameter:&#10;#def rm_main(data,macros):&#10;def rm_main(data,data2):&#10;    print('Hello, world!')&#10;    # output can be found in Log View&#10;    print(type(data))&#10;    with open(r'S:\uropea\1_cuatrimiestre\proyecto_computacion1\proyecto\otro\file.json', 'w+', encoding='utf-8') as file:&#10;        data_dict = data.to_dict()&#10;        json.dump(data_dict,file)&#10;    with open(r'S:\uropea\1_cuatrimiestre\proyecto_computacion1\proyecto\otro\file2.json', 'w+', encoding='utf-8') as file:&#10;        data_dict = data2['word'].values.tolist()&#10;        file.writelines(data_dict)&#10;        #json.dump(data_dict,file)&#10;    data_dict = data2['word'].values.tolist()&#10;    for col_name in data_dict:&#10;        if col_name not in data:&#10;            data[col_name] = 0&#10;    return data"/>
+        <parameter key="script_file" value="S:/uropea/1_cuatrimiestre/proyecto_computacion1/proyecto/cocinas_update/RapidMiner/script/script_prep_data.py"/>
+        <parameter key="notebook_cell_tag_filter" value=""/>
+        <parameter key="use_default_python" value="false"/>
+        <parameter key="package_manager" value="specific python binaries"/>
+        <parameter key="python_binary" value="S:\uropea\1_cuatrimiestre\inteligencia_artificial\workspace\venv\Scripts\python.exe"/>
+        <parameter key="use_macros" value="false"/>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="10.0.000" expanded="true" height="103" name="after_python_join" width="90" x="648" y="136"/>
+      <operator activated="true" class="apply_model" compatibility="10.0.000" expanded="true" height="82" name="Apply Model" width="90" x="715" y="34">
+        <list key="application_parameters"/>
+        <parameter key="create_view" value="false"/>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="10.0.000" expanded="true" height="82" name="label_apply_model" width="90" x="916" y="187"/>
+      <operator activated="false" class="performance" compatibility="10.0.000" expanded="true" height="82" name="Performance" width="90" x="916" y="391">
+        <parameter key="use_example_weights" value="true"/>
+      </operator>
+      <connect from_op="Retrieve" from_port="output" to_op="Apply Model" to_port="model"/>
+      <connect from_op="Read Document" from_port="output" to_op="Process Documents" to_port="documents 1"/>
+      <connect from_op="Process Documents" from_port="example set" to_op="process_documents_exSet" to_port="input"/>
+      <connect from_op="Process Documents" from_port="word list" to_op="WordList to Data (2)" to_port="word list"/>
+      <connect from_op="WordList to Data (2)" from_port="example set" to_op="Process_Documents_WordlistToData" to_port="input"/>
+      <connect from_op="Process_Documents_WordlistToData" from_port="output 1" to_op="Execute Python" to_port="input 3"/>
+      <connect from_op="Process_Documents_WordlistToData" from_port="output 2" to_port="result 7"/>
+      <connect from_op="process_documents_exSet" from_port="output 1" to_port="result 6"/>
+      <connect from_op="process_documents_exSet" from_port="output 2" to_op="Execute Python" to_port="input 1"/>
+      <connect from_op="Retrieve (2)" from_port="output" to_op="WordList to Data" to_port="word list"/>
+      <connect from_op="WordList to Data" from_port="example set" to_op="Retrieve_data_trainned_for_model" to_port="input"/>
+      <connect from_op="Retrieve_data_trainned_for_model" from_port="output 1" to_port="result 3"/>
+      <connect from_op="Retrieve_data_trainned_for_model" from_port="output 2" to_op="Execute Python" to_port="input 2"/>
+      <connect from_op="Execute Python" from_port="output 1" to_op="after_python_join" to_port="input"/>
+      <connect from_op="Execute Python" from_port="output 2" to_port="result 5"/>
+      <connect from_op="after_python_join" from_port="output 1" to_port="result 1"/>
+      <connect from_op="after_python_join" from_port="output 2" to_op="Apply Model" to_port="unlabelled data"/>
+      <connect from_op="Apply Model" from_port="labelled data" to_op="label_apply_model" to_port="input"/>
+      <connect from_op="Apply Model" from_port="model" to_port="result 2"/>
+      <connect from_op="label_apply_model" from_port="output 1" to_port="result 4"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
+      <portSpacing port="sink_result 5" spacing="0"/>
+      <portSpacing port="sink_result 6" spacing="0"/>
+      <portSpacing port="sink_result 7" spacing="0"/>
+      <portSpacing port="sink_result 8" spacing="0"/>
+    </process>
+  </operator>
+</process>

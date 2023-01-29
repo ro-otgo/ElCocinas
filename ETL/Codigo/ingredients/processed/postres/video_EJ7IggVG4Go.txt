@@ -1,0 +1,8 @@
+wafer
+fruit
+hand
+strawberry
+chocolate
+liquid
+sugar
+milk

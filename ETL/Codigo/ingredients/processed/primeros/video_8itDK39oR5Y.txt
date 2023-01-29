@@ -1,0 +1,16 @@
+ham
+chicken
+carrot
+onion
+oil
+water
+pea
+pepper
+soup
+vegetable
+butter
+salt
+base
+celery
+clove
+broth

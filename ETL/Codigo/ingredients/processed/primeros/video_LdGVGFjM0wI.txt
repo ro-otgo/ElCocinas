@@ -1,0 +1,17 @@
+herb
+garlic
+basil
+chicken
+onion
+cod
+leaf
+oil
+pepper
+potato
+round
+glaze
+tomato
+fish
+salt
+clove
+sauce

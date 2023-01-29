@@ -1,0 +1,8 @@
+hand
+onion
+oil
+pepper
+seasoning
+fish
+salt
+fillet

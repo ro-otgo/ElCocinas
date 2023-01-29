@@ -1,0 +1,15 @@
+salt
+olive
+bacon
+potato
+meal
+butter
+soup
+oil
+rib
+cheese
+pepper
+garlic
+herb
+cream
+onion

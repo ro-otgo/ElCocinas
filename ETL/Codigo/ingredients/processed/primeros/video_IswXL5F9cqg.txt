@@ -1,0 +1,17 @@
+foot
+herb
+garlic
+topping
+oil
+steak
+filling
+cheese
+sponge
+juice
+seasoning
+parsley
+butter
+glaze
+tomato
+salt
+mushroom

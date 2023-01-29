@@ -1,0 +1,7 @@
+basil
+leaf
+round
+salt
+tomato
+vinegar
+avocado

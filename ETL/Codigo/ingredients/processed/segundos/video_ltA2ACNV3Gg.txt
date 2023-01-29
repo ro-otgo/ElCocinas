@@ -1,0 +1,13 @@
+carrot
+onion
+water
+meat
+rice
+vegetable
+potato
+curry
+beef
+spice
+chili
+gravy
+lentil

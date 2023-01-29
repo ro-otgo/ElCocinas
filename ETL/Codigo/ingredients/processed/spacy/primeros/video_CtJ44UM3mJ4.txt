@@ -1,0 +1,11 @@
+seed
+salt
+twist
+avocado
+clove
+soup
+lime
+guacamole
+onion
+tomato
+citrus

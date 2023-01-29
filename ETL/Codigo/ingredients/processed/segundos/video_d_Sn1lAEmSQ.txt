@@ -1,0 +1,14 @@
+chicken
+soy
+onion
+oil
+anise
+water
+pepper
+wine
+rice
+liquid
+spice
+salt
+broth
+sugar

@@ -1,0 +1,11 @@
+onion
+bread
+egg
+pepper
+cheese
+seasoning
+spice
+zucchini
+salt
+crumb
+sauce

@@ -1,0 +1,14 @@
+quinoa
+garlic
+carrot
+onion
+stock
+barley
+pepper
+rice
+bean
+tomato
+soup
+celery
+salt
+meal

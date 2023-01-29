@@ -1,0 +1,10 @@
+onion
+oil
+pepper
+potato
+salt
+tomato
+plum
+clove
+sugar
+sauce

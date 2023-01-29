@@ -1,0 +1,9 @@
+wafer
+mint
+egg
+candy
+nut
+chocolate
+dough
+cooky
+sugar

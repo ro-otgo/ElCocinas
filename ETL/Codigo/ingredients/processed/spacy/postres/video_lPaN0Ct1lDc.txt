@@ -1,0 +1,11 @@
+sugar
+milk
+meal
+butter
+sandwich
+pudding
+peanut
+cheese
+chocolate
+banana
+cream

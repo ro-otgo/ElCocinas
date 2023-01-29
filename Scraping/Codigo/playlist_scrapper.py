@@ -9,10 +9,13 @@ El nombre del fichero corresponde al nombre de la playlist.
 Parametros a configurar:
 - PLAYLIST_URL = Url de la playlist a descargar.
 """
+
+__author__ = "ro-otgo"
+
 from pytube import Playlist
 from urllib import parse
 
-PLAYLIST_URL = 'https://www.youtube.com/watch?v=VdWM48aTiXA&list=PL2LHabI5sYyEyyuDesusF4FwGXjePVz37'
+# PLAYLIST_URL = 'https://www.youtube.com/watch?v=VdWM48aTiXA&list=PL2LHabI5sYyEyyuDesusF4FwGXjePVz37'
 PLAYLIST_URL = 'https://www.youtube.com/watch?v=a9lZ765L_P0&list=PLziprGSUFGYS4mxSpg3ZGxyVbTXEY9c_B'
 
 def retrive_playlist_name(playlist_url: str)-> str:

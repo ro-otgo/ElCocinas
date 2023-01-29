@@ -1,0 +1,9 @@
+salt
+chip
+sauce
+pepper
+cheese
+fat
+garlic
+cream
+onion

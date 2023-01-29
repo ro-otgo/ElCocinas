@@ -1,0 +1,10 @@
+hand
+milk
+bear
+chip
+seed
+butter
+chocolate
+orange
+sugar
+cracker

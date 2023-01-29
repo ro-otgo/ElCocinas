@@ -1,0 +1,17 @@
+hand
+roll
+juice
+egg
+frosting
+nut
+butter
+shortening
+salt
+liquid
+almond
+cooky
+dough
+cherry
+flour
+sugar
+milk

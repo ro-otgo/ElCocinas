@@ -1,0 +1,6 @@
+salt
+vinegar
+avocado
+basil
+pepper
+tomato
