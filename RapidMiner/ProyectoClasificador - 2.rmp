@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="10.0.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="10.0.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="false" class="text:process_document_from_file" compatibility="10.0.000" expanded="true" height="82" name="Process Documents from Files" width="90" x="45" y="136">
+        <list key="text_directories">
+          <parameter key="Cake" value="S:/uropea/1_cuatrimiestre/proyecto_computacion1/proyecto/ElCocinas/transcript/transcript_jesus"/>
+          <parameter key="Dessert" value="S:/uropea/1_cuatrimiestre/proyecto_computacion1/proyecto/ElCocinas/transcript/playlist_PL2LHabI5sYyEyyuDesusF4FwGXjePVz37"/>
+        </list>
+        <parameter key="file_pattern" value="*"/>
+        <parameter key="extract_text_only" value="true"/>
+        <parameter key="use_file_extension_as_type" value="true"/>
+        <parameter key="content_type" value="txt"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="create_word_vector" value="true"/>
+        <parameter key="vector_creation" value="Term Frequency"/>
+        <parameter key="add_meta_information" value="true"/>
+        <parameter key="keep_text" value="true"/>
+        <parameter key="prune_method" value="absolute"/>
+        <parameter key="prune_below_percent" value="3.0"/>
+        <parameter key="prune_above_percent" value="30.0"/>
+        <parameter key="prune_below_absolute" value="80"/>
+        <parameter key="prune_above_absolute" value="200"/>
+        <parameter key="prune_below_rank" value="0.05"/>
+        <parameter key="prune_above_rank" value="0.95"/>
+        <parameter key="datamanagement" value="double_sparse_array"/>
+        <parameter key="data_management" value="auto"/>
+        <process expanded="true">
+          <operator activated="true" class="text:tokenize" compatibility="10.0.000" expanded="true" height="68" name="Tokenize (2)" width="90" x="45" y="136">
+            <parameter key="mode" value="non letters"/>
+            <parameter key="characters" value=".:"/>
+            <parameter key="language" value="English"/>
+            <parameter key="max_token_length" value="3"/>
+          </operator>
+          <operator activated="true" class="text:filter_by_length" compatibility="10.0.000" expanded="true" height="68" name="Filter Tokens (by Length)" width="90" x="179" y="136">
+            <parameter key="min_chars" value="4"/>
+            <parameter key="max_chars" value="25"/>
+          </operator>
+          <operator activated="true" class="text:transform_cases" compatibility="10.0.000" expanded="true" height="68" name="Transform Cases (2)" width="90" x="313" y="136">
+            <parameter key="transform_to" value="lower case"/>
+          </operator>
+          <operator activated="true" class="text:filter_stopwords_english" compatibility="10.0.000" expanded="true" height="68" name="Filter Stopwords (English)" width="90" x="447" y="136"/>
+          <operator activated="true" class="text:filter_stopwords_dictionary" compatibility="10.0.000" expanded="true" height="82" name="Filter Stopwords (Dictionary)" width="90" x="648" y="136">
+            <parameter key="file" value="C:/Users/jovig/Desktop/ProyectoCompu/arbol de decision/StopWords/stopwords.txt"/>
+            <parameter key="case_sensitive" value="false"/>
+            <parameter key="encoding" value="SYSTEM"/>
+          </operator>
+          <operator activated="true" class="text:stem_porter" compatibility="10.0.000" expanded="true" height="68" name="Stem (Porter)" width="90" x="983" y="136"/>
+          <connect from_port="document" to_op="Tokenize (2)" to_port="document"/>
+          <connect from_op="Tokenize (2)" from_port="document" to_op="Filter Tokens (by Length)" to_port="document"/>
+          <connect from_op="Filter Tokens (by Length)" from_port="document" to_op="Transform Cases (2)" to_port="document"/>
+          <connect from_op="Transform Cases (2)" from_port="document" to_op="Filter Stopwords (English)" to_port="document"/>
+          <connect from_op="Filter Stopwords (English)" from_port="document" to_op="Filter Stopwords (Dictionary)" to_port="document"/>
+          <connect from_op="Filter Stopwords (Dictionary)" from_port="document" to_op="Stem (Porter)" to_port="document"/>
+          <connect from_op="Stem (Porter)" from_port="document" to_port="document 1"/>
+          <portSpacing port="source_document" spacing="0"/>
+          <portSpacing port="sink_document 1" spacing="0"/>
+          <portSpacing port="sink_document 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="false" class="set_parameters" compatibility="10.0.000" expanded="true" height="82" name="Set Parameters" width="90" x="246" y="34">
+        <list key="name_map">
+          <parameter key="wordlist" value="C:/Users/jovig/Desktop/ProyectoCompu/arbol de decision/StopWords/stopwords.txt"/>
+          <parameter key="Dessert" value="C:/Users/jovig/Desktop/ProyectoCompu/arbol de decision/Postres/transcript"/>
+          <parameter key="Cake" value="C:/Users/jovig/Desktop/ProyectoCompu/arbol de decision/cake/transcript"/>
+        </list>
+      </operator>
+      <operator activated="true" class="text:process_document_from_file" compatibility="10.0.000" expanded="true" height="82" name="Process Documents from Files (2)" width="90" x="112" y="340">
+        <list key="text_directories">
+          <parameter key="postres" value="S:/uropea/1_cuatrimiestre/proyecto_computacion1/proyecto/cocinas_update/RapidMiner/fuentes/postres"/>
+        </list>
+        <parameter key="file_pattern" value="*"/>
+        <parameter key="extract_text_only" value="true"/>
+        <parameter key="use_file_extension_as_type" value="true"/>
+        <parameter key="content_type" value="txt"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="create_word_vector" value="true"/>
+        <parameter key="vector_creation" value="TF-IDF"/>
+        <parameter key="add_meta_information" value="true"/>
+        <parameter key="keep_text" value="false"/>
+        <parameter key="prune_method" value="none"/>
+        <parameter key="prune_below_percent" value="3.0"/>
+        <parameter key="prune_above_percent" value="30.0"/>
+        <parameter key="prune_below_rank" value="0.05"/>
+        <parameter key="prune_above_rank" value="0.95"/>
+        <parameter key="datamanagement" value="double_sparse_array"/>
+        <parameter key="data_management" value="auto"/>
+        <process expanded="true">
+          <operator activated="true" class="text:tokenize" compatibility="10.0.000" expanded="true" height="68" name="Tokenize" width="90" x="45" y="85">
+            <parameter key="mode" value="non letters"/>
+            <parameter key="characters" value=".:"/>
+            <parameter key="language" value="English"/>
+            <parameter key="max_token_length" value="3"/>
+          </operator>
+          <operator activated="true" class="text:filter_by_length" compatibility="10.0.000" expanded="true" height="68" name="Filter Tokens (by Length) (2)" width="90" x="179" y="85">
+            <parameter key="min_chars" value="4"/>
+            <parameter key="max_chars" value="25"/>
+          </operator>
+          <operator activated="true" class="text:transform_cases" compatibility="10.0.000" expanded="true" height="68" name="Transform Cases" width="90" x="313" y="85">
+            <parameter key="transform_to" value="lower case"/>
+          </operator>
+          <operator activated="true" class="text:filter_tokens_by_pos" compatibility="10.0.000" expanded="true" height="68" name="Filter Tokens (by POS Tags)" width="90" x="447" y="85">
+            <parameter key="language" value="English"/>
+            <parameter key="expression" value="N.*"/>
+            <parameter key="invert_filter" value="false"/>
+          </operator>
+          <operator activated="true" class="text:filter_stopwords_english" compatibility="10.0.000" expanded="true" height="68" name="Filter Stopwords (English) (2)" width="90" x="648" y="85"/>
+          <operator activated="false" class="text:stem_porter" compatibility="10.0.000" expanded="true" height="68" name="Stem (Porter) (2)" width="90" x="380" y="340"/>
+          <connect from_port="document" to_op="Tokenize" to_port="document"/>
+          <connect from_op="Tokenize" from_port="document" to_op="Filter Tokens (by Length) (2)" to_port="document"/>
+          <connect from_op="Filter Tokens (by Length) (2)" from_port="document" to_op="Transform Cases" to_port="document"/>
+          <connect from_op="Transform Cases" from_port="document" to_op="Filter Tokens (by POS Tags)" to_port="document"/>
+          <connect from_op="Filter Tokens (by POS Tags)" from_port="document" to_op="Filter Stopwords (English) (2)" to_port="document"/>
+          <connect from_op="Filter Stopwords (English) (2)" from_port="document" to_port="document 1"/>
+          <portSpacing port="source_document" spacing="0"/>
+          <portSpacing port="sink_document 1" spacing="0"/>
+          <portSpacing port="sink_document 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="text:wordlist_to_data" compatibility="10.0.000" expanded="true" height="82" name="WordList to Data" width="90" x="313" y="391"/>
+      <operator activated="true" class="multiply" compatibility="10.0.000" expanded="true" height="103" name="wordlist_data" width="90" x="514" y="442"/>
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve" width="90" x="112" y="544">
+        <parameter key="repository_entry" value="../data/ingredients"/>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="10.0.000" expanded="true" height="103" name="ingredient_list_data" width="90" x="246" y="697"/>
+      <operator activated="true" class="concurrency:join" compatibility="10.0.000" expanded="true" height="82" name="Join" width="90" x="715" y="697">
+        <parameter key="remove_double_attributes" value="true"/>
+        <parameter key="join_type" value="inner"/>
+        <parameter key="use_id_attribute_as_key" value="false"/>
+        <list key="key_attributes">
+          <parameter key="word" value="words"/>
+        </list>
+        <parameter key="keep_both_join_attributes" value="false"/>
+      </operator>
+      <connect from_op="Process Documents from Files (2)" from_port="example set" to_port="result 1"/>
+      <connect from_op="Process Documents from Files (2)" from_port="word list" to_op="WordList to Data" to_port="word list"/>
+      <connect from_op="WordList to Data" from_port="example set" to_op="wordlist_data" to_port="input"/>
+      <connect from_op="wordlist_data" from_port="output 1" to_port="result 3"/>
+      <connect from_op="wordlist_data" from_port="output 2" to_op="Join" to_port="left"/>
+      <connect from_op="Retrieve" from_port="output" to_op="ingredient_list_data" to_port="input"/>
+      <connect from_op="ingredient_list_data" from_port="output 1" to_op="Join" to_port="right"/>
+      <connect from_op="ingredient_list_data" from_port="output 2" to_port="result 2"/>
+      <connect from_op="Join" from_port="join" to_port="result 4"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
+      <portSpacing port="sink_result 5" spacing="0"/>
+    </process>
+  </operator>
+</process>
