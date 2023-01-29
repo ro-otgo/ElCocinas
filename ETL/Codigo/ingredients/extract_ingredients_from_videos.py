@@ -20,7 +20,7 @@ __author__ = 'ro-otgo'
 
 VIDEO_TXT_DIR = r'Scraping\Datos\processed'
 INGREDIENTS_TXT_FILE = r'C:\Users\Rodrigo\Downloads\representation-for-ingredients\test.json\ingredients\train.txt'
-OUTPUT_DIR = r'Scraping\Codigo\ingredients\processed'
+OUTPUT_DIR = r'ETL\Datos\ingredients\processed'
 
 wnl = WordNetLemmatizer()
 excluded = ['ingredients']

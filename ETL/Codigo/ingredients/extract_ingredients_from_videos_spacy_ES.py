@@ -155,12 +155,12 @@ def __test_spacy_es():
             print(token, token.lemma_, token.tag_, token.is_stop)
 
 if __name__ == '__main__':
-    print(nlp('cebolla')[0].lemma_)
-    __test_spacy_es()
-    __test_spacy()
-    if True:
-        sys.exit()
+    # print(nlp('cebolla')[0].lemma_)
+    # __test_spacy_es()
+    # __test_spacy()
     # __test_nltk()
+    # if True:
+        # sys.exit()
     ingredients_set = read_ingredients(INGREDIENTS_TXT_FILE)
     time_data = []
     for root, dirs, files in os.walk(VIDEO_TXT_DIR, topdown=True):
@@ -172,5 +172,5 @@ if __name__ == '__main__':
                 write_ingredients(result, os.path.basename(root), file)
                 time_data.append('{time_data}: {file_name}'.format(time_data=datetime.now().strftime('%d-%m-%Y %H:%M:%S'), file_name=file))
 
-    # with open('timelog_spacy.txt','w+',encoding='utf-8') as file:
-    #     file.writelines('\n'.join(time_data))
+    with open('timelog_spacy_es.txt','w+',encoding='utf-8') as file:
+        file.writelines('\n'.join(time_data))
