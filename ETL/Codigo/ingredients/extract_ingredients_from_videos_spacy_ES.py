@@ -23,7 +23,7 @@ import os
 __author__ = 'ro-otgo'
 
 VIDEO_TXT_DIR = r'output_transcripciones\processed'
-INGREDIENTS_TXT_FILE = r'C:\Users\Rodrigo\Downloads\representation-for-ingredients\ingredientes_espanol\ingredientes-processed-es.txt'
+INGREDIENTS_TXT_FILE = r'ETL\Codigo\ingredients\dataset_ingredients\ingredientes_espanol\ingredientes-processed-es.txt'
 OUTPUT_DIR = r'output_transcripciones\ingredientes\es\processed\spacy'
 
 wnl = WordNetLemmatizer()

@@ -6,8 +6,8 @@ del video.
 Esta pagina web permite buscar recetas en base as los ingredientes disponibles.
 
 """
-
 __author__ = 'ro-otgo'
+
 import os
 import time
 import json
@@ -119,10 +119,11 @@ def create_driver(headless=False):
     options =  webdriver.FirefoxOptions()
     options.headless = headless
     driver = webdriver.Firefox(service=service, options= options)
+    return driver
 
 if __name__ == '__main__':
-    ingredients = read_ingredients_list(os.path.join('.',r'ETL\Codigo\ingredients\processed\postres\video__1TzqLW456I.txt'))
-    driver = webdriver.Firefox()
+    ingredients = read_ingredients_list(os.path.join('.',r'ETL\Datos\ingredients\processed\spacy\postres\video__1TzqLW456I.txt'))
+    driver = create_driver()
     add_ingredients(ingredients)
     search_recipe()
     
